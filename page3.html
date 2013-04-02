@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>甲壳虫03</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css"/>
+    <script src="main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="phonegap.js"></script>
+</head>
+<body>
+<style>
+    body {
+        margin: 0 0 0 0;
+        background-color: black;
+    }
+
+    .background {
+        width: 1280px;
+        height: 752px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-image: url("img/pic3-0.png");
+    }
+
+    .button {
+        position: absolute;
+        right: 120px;
+        top: 600px;
+    }
+
+    .music {
+        position: absolute;
+
+        left: 185px;
+        top: 500px;
+    }
+
+    .pic1 {
+        position: absolute;
+        left: 230px;
+        top: 50px;
+    }
+
+    .pic2 {
+        position: absolute;
+        left: 185px;
+        top: 500px;
+    }
+
+    .play {
+        position: absolute;
+        left: 330px;
+        top: 580px;
+    }
+
+    .pause {
+        position: absolute;
+        left: 330px;
+        top: 580px;
+    }
+    .forwar {
+        position: absolute;
+        left: 380px;
+        top: 580px;
+    }
+    .back {
+        position: absolute;
+        left: 420px;
+        top: 580px;
+    }
+    .S_name {
+        position: absolute;
+        left: 330px;
+        top: 510px;
+        color: #e88600;
+        font-weight: 900;
+    }
+    .M_name {
+        position: absolute;
+        left: 230px;
+        top: 450px;
+        color: #e88600;
+        font-weight: 900;
+        font-size: 25px;
+    }
+
+    .A_name {
+        position: absolute;
+        left: 200px;
+        top: 360px;
+        color: #e88600;
+        font-weight: 900;
+        font-size: 20px;
+    }
+
+    .pos {
+        position: absolute;
+        left: 320px;
+        top: 545px;
+    }
+
+    #background {
+        width: 220px;
+        height: 15px;
+        left: 8px;
+        top: 10px;
+        z-index: 1;
+        position: absolute;
+        background-image: url("img/pic3-6.png");
+
+    }
+
+    #overLoad {
+        width: 0px;
+        height: 15px;
+        left: 8px;
+        top: 10px;
+        z-index: 2;
+        position: absolute;
+        background-image: url("img/pic3-5.png");
+    }
+    .time {
+        position: absolute;
+        left: 480px;
+        top: 520px;
+    }
+</style>
+<div class="background">
+    <div class="music">
+        <img src="img/pic3-2.png " onload="playAudio(musicName)"/>
+    </div>
+    <div class="pic1" id="pic1">
+        <img id="picture1" onload="picZ (album);sName(singer);mName(musicName);aName(album) "
+             src="img/Feel Good Inc.jpg"/>
+    </div>
+
+    <div class="pic2">
+        <img id="picture2" onload="picG (singer)" src="img/Gorillaz.jpg "
+             style="width: 119px ;height: 124px ; background-size: 100%"/>
+    </div>
+    <div class="play" id="play" style="display: none">
+        <img onclick="changePause();" src="img/play.png "/>
+    </div>
+    <div class="pause" id="pause">
+        <img onclick="changePlay();" src="img/pause.png "/>
+    </div>
+    <div class="forwar" id="forwar">
+        <img onclick="ForwardAudio(musicName)" src="img/forwar.png "/>
+    </div>
+    <div class="back" id="back">
+        <a href="page2.html"><img onclick="BackAudio()" src="img/back.png "/></a>
+    </div>
+    <div class="button">
+        <a href="index.html"><img src="img/pic3-1.png" onclick="toEndAudio()"></a>
+    </div>
+    <div class="pos">
+        <div id="background"></div>
+        <div id="overLoad"></div>
+    </div>
+    <div class="time">
+        <p id="audio_position">0.00 sec</p>
+    </div>
+    <div class="M_name" id="M_name">
+        demo1
+    </div>
+    <div class="S_name" id="S_name">
+        demo1
+    </div>
+    <div class="A_name" id="A_name">
+        demo1
+    </div>
+</div>
+</body>
+</html>
