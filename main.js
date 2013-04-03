@@ -125,12 +125,12 @@ function aName(album) {
 
 var my_media = null;
 var mediaTimer = null;
-function playAudio(src) {
-    if (src == "我是歌手") {
-        src = "woshigeshou";
+function playAudioMain(src) {
+    if (src == "光辉岁月") {
+        src = "guanghuisuiyue";
     }
-    if (src == "真的见证") {
-        src = "zhendejianzheng";
+    if (src == "无地自容") {
+        src = "wudizirong";
     }
     if (src == "海阔天空") {
         src = "haikuotiankong";
@@ -141,6 +141,7 @@ function playAudio(src) {
     my_media = new Media(src, onSuccess, onError);
     // Play audio
     my_media.play();
+    console.log("play the music");
     // Update my_media position every second
     if (mediaTimer == null) {
         mediaTimer = setInterval(function () {
@@ -162,25 +163,27 @@ function playAudio(src) {
                 },
                 // error callback
                 function (e) {
-                    console.log("Error getting pos=" + e);
+                    //console.log("Error getting pos=" + e);
                     setAudioPosition("Error: " + e);
                 }
             );
         }, 10);
     }
 }
-
+function playAudio(src){
+    stopAudio();
+    playAudioMain(src);
+}
 // onSuccess Callback
 //
 function onSuccess() {
-    console.log("playAudio():Audio Success");
+    console.log("");
 }
 
 // onError Callback
 //
 function onError(error) {
-    console.log('code: ' + error.code + '\n' +
-        'message: ' + error.message + '\n');
+    console.log("");
 }
 // Set audio position
 //
@@ -195,6 +198,7 @@ function changePlay() {
     play.style.display = "";
     if (my_media) {
         my_media.pause();
+        console.log("pause the music");
     }
 }
 
@@ -204,11 +208,13 @@ function changePause() {
     var play = document.getElementById("play");
     play.style.display = "none";
     my_media.play();
+    console.log("Continue to play music");
 }
 
 function stopAudio() {
     if (my_media) {
         my_media.stop();
+        console.log("stop the music");
     }
     clearInterval(mediaTimer);
     mediaTimer = null;
@@ -219,15 +225,10 @@ function ForwardAudio(src) {
     playAudio(src);
 }
 function BackAudio() {
-    console.log("跳转到page2");
     stopAudio();
-//    setTimeout(function () {
-//        playAudio(src);
-//    }, -10000);
 }
 
 function toEndAudio() {
-    console.log("跳转到page1");
     stopAudio();
 }
 
