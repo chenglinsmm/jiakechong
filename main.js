@@ -92,13 +92,13 @@ function grabBody(html) {
 }
 
 function picZ(album) {
-    if(album == "黑豹"){
-        album = "heibao";
+    if (album == "我是歌手") {
+        album = "woshigeshou";
     }
-    if(album == "光辉岁月"){
-        album = "guanghuisuiyue";
+    if (album == "真的见证") {
+        album = "zhendejianzheng";
     }
-    if(album == "海阔天空"){
+    if (album == "海阔天空") {
         album = "haikuotiankong";
     }
     var pic_A = "img/" + album + ".jpg";
@@ -106,8 +106,8 @@ function picZ(album) {
 
 }
 function picG(singer) {
-    if(singer == "黑豹乐队"){
-        singer = "heibaoyuedui";
+    if (singer == "周晓欧") {
+        singer = "zhouxiaoou";
     }
     var pic_S = "img/" + singer + ".jpg";
     document.getElementById("picture2").src = pic_S;
@@ -120,57 +120,54 @@ function mName(musicName) {
     document.getElementById("M_name").innerHTML = musicName;
 }
 function aName(album) {
-    document.getElementById("A_name").innerHTML = "《  " + album + "  》";
+    document.getElementById("A_name").innerHTML = "《 " + album + " 》";
 }
 
 var my_media = null;
 var mediaTimer = null;
 function playAudio(src) {
-    if(src == "无地自容"){
-        src = "wudizirong";
+    if (src == "我是歌手") {
+        src = "woshigeshou";
     }
-    if(src == "光辉岁月"){
-        src = "guanghuisuiyue";
+    if (src == "真的见证") {
+        src = "zhendejianzheng";
     }
-    if(src == "海阔天空"){
+    if (src == "海阔天空") {
         src = "haikuotiankong";
     }
-    my_media.stop();
     var src = "/android_asset/www/" + src + ".mp3";
     //alert("src::" + src);
-    setTimeout(function() {
-        // Create Media object from src
-        my_media = new Media(src, onSuccess, onError);
-        // Play audio
-        my_media.play();
-        // Update my_media position every second
-        if (mediaTimer == null) {
-            mediaTimer = setInterval(function () {
-                var durTime = my_media.getDuration();
-                // get my_media position
-                my_media.getCurrentPosition(
-                    // success callback
-                    function (position) {
-                        if (position >= durTime) {
-                            position = durTime;
-                            document.getElementById('overLoad').style.width = 0 + "px";
-                        }
-                        document.getElementById('overLoad').style.width = position / durTime * 220 + "px";
-                        //document.getElementById('showTime').innerHTML = "timeRemaining:" + (durTime - position) + "millisecond";
-
-                        if (position > -1) {
-                            setAudioPosition((position.toFixed(1)) + " sec");
-                        }
-                    },
-                    // error callback
-                    function (e) {
-                        console.log("Error getting pos=" + e);
-                        setAudioPosition("Error: " + e);
+    // Create Media object from src
+    my_media = new Media(src, onSuccess, onError);
+    // Play audio
+    my_media.play();
+    // Update my_media position every second
+    if (mediaTimer == null) {
+        mediaTimer = setInterval(function () {
+            var durTime = my_media.getDuration();
+            // get my_media position
+            my_media.getCurrentPosition(
+                // success callback
+                function (position) {
+                    if (position >= durTime) {
+                        position = durTime;
+                        document.getElementById('overLoad').style.width = 0 + "px";
                     }
-                );
-            }, 10);
-        }
-    }, 10000);
+                    document.getElementById('overLoad').style.width = position / durTime * 220 + "px";
+                    //document.getElementById('showTime').innerHTML = "timeRemaining:" + (durTime - position) + "millisecond";
+
+                    if (position > -1) {
+                        setAudioPosition((position.toFixed(1)) + " sec");
+                    }
+                },
+                // error callback
+                function (e) {
+                    console.log("Error getting pos=" + e);
+                    setAudioPosition("Error: " + e);
+                }
+            );
+        }, 10);
+    }
 }
 
 // onSuccess Callback

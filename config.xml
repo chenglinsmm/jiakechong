@@ -6,7 +6,7 @@
         id        = "com.phonegap.hello-world"
         version   = "1.0.0">
 
-    <name>甲壳虫播放器</name>
+    <name>播放器</name>
 
     <description>
         Its gona to play music.
